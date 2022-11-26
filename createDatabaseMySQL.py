@@ -11,14 +11,14 @@ Creating a MySQL Database in Python // macOS
 
 # pip install SQLAlchemy
 
-#import modules
+# import modules
 import os
 import pandas as pd
 import sqlalchemy
 from sqlalchemy import create_engine, text
 # import mysqlclient
 
-#confirm install
+# confirm install
 # check SQL Alchemy version
 print(sqlalchemy.__version__)
 print(os.getcwd())
@@ -60,13 +60,13 @@ engine.begin() has auto COMMIT
 
 # get a connection / get column names // auto ROLLBACK
 with engine.connect() as conn:
-    result = conn.execute(text("DESCRIBE dataTable;"))
+    result = conn.execute(text("DESCRIBE tableName;"))
     for row in result:
         print(row)
 
 # get a connection / fetch rows // auto ROLLBACK
 with engine.connect() as conn:
-    result = conn.execute(text("SELECT * FROM dataTable"))
+    result = conn.execute(text("SELECT * FROM tableName"))
     for row in result:
         print(f"""
               index: {row.index}
@@ -78,7 +78,7 @@ with engine.connect() as conn:
 # # get a connection / drop a table // autocommit
 # with engine.begin() as conn:
 #     conn.execute(
-#         text("DROP TABLE dataTable"))
+#         text("DROP TABLE tableName"))
                  
 # # close all checked in database connections 
 # engine.dispose() 
